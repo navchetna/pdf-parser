@@ -36,7 +36,10 @@ source .pdf-venv/bin/activate
 ### 4. Install Core Dependencies
 Install the marker PDF library:
 ```bash
-uv pip install marker-pdf
+git clone https://github.com/navchetna/marker.git
+cd marker/
+uv pip install -e .
+cd ..
 ```
 
 ### 5. Install Surya Fork
