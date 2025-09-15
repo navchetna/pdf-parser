@@ -3,7 +3,7 @@
 > A powerful PDF parsing solution built for high-performance document processing
 
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10
@@ -12,7 +12,7 @@
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -69,12 +69,12 @@ export LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc.so.4
 
 > **💡 Tip:** Add the TCMalloc export command to your `.bashrc` or `.zshrc` for persistent memory optimization.
 
-## ⚡ Performance Notes
+## Performance Notes
 
 - **TCMalloc**: Reduces memory fragmentation and improves allocation speed
 - **Intel Extension**: Provides hardware-accelerated inference on Intel CPUs
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Marker PDF Documentation](https://github.com/VikParuchuri/marker)
 - [Original Surya Project](https://github.com/VikParuchuri/surya)
