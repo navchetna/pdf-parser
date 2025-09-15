@@ -29,6 +29,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ### 3. Create Virtual Environment
 ```bash
 uv venv .pdf-venv --python 3.10
+# Activate the environment
+source .pdf-venv/bin/activate
 ```
 
 ### 4. Install Core Dependencies
