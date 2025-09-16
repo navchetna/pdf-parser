@@ -34,21 +34,15 @@ source .pdf-venv/bin/activate
 ```
 
 ### 4. Install Core Dependencies
-Install the marker PDF library:
+Install the marker-pdf library:
 ```bash
-git clone https://github.com/navchetna/marker.git
-cd marker/
-uv pip install -e .
-cd ..
+uv pip install git+https://github.com/navchetna/marker.git
 ```
 
 ### 5. Install Surya Fork
-Clone and install the custom Surya fork:
+Install the custom Surya fork:
 ```bash
-git clone https://github.com/navchetna/surya.git
-cd surya/
-uv pip install -e .
-cd ..
+uv pip install git+https://github.com/navchetna/surya.git
 ```
 
 ### 6. Performance Optimization
