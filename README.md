@@ -40,7 +40,7 @@ uv pip install git+https://github.com/navchetna/marker.git
 ```
 
 ### 5. Install Surya Fork
-Install the custom Surya fork:
+Install the optimized Surya fork:
 ```bash
 uv pip install git+https://github.com/navchetna/surya.git
 ```
