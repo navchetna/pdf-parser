@@ -107,7 +107,7 @@ def build_mistral_like_response(rendered):
 app = FastAPI(title="Marker PDF -> JSON API")
 
 
-@app.post("/convert-pdf-to-json/")
+@app.post("/convert-pdf-to-json")
 async def convert_pdf(
     file: UploadFile = File(...),
     output_format: str = Query("markdown", description="Renderer output format for marker (e.g., 'markdown')"),

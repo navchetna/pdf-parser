@@ -64,6 +64,29 @@ sudo apt install google-perftools libgoogle-perftools-dev
 export LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc.so.4
 ```
 
+### 8. Expose this as an API
+Install the requirements
+```bash
+uv pip install -r requirements.txt
+```
+
+Start the application
+```bash
+uvicorn main:app
+```
+
+Send a curl request
+```bash
+curl -X POST "http://localhost:8000/convert-pdf-to-json" -F "file=@/path/to/pdf" -o output.json
+```
+The output will be saved to 'output.json'
+
+Example script to convert the API response into markdown:
+> You need to update the file path within the script (could be coverted to cli arg)
+```bash
+python format_response.py
+```
+
 > **💡 Tip:** Add the TCMalloc export command to your `.bashrc` or `.zshrc` for persistent memory optimization.
 
 ## Performance Notes
