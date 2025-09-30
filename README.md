@@ -45,7 +45,13 @@ Install the optimized Surya fork:
 uv pip install git+https://github.com/navchetna/surya.git
 ```
 
-### 6. Performance Optimization
+### 6. Install Tree Parser
+Install the tree parsing package:
+```bash
+uv pip install git+https://github.com/navchetna/tree-parser.git
+```
+
+### 7. Performance Optimization
 Install Intel® Extension for PyTorch for significant performance gains:
 ```bash
 uv pip install intel_extension_for_pytorch
@@ -56,7 +62,7 @@ Verify the installation:
 uv pip show intel_extension_for_pytorch
 ```
 
-### 7. Memory Optimization (Linux Only)
+### 8. Memory Optimization (Linux Only)
 Install TCMalloc for better memory utilization:
 ```bash
 sudo apt update
@@ -64,7 +70,7 @@ sudo apt install google-perftools libgoogle-perftools-dev
 export LD_PRELOAD=/lib/x86_64-linux-gnu/libtcmalloc.so.4
 ```
 
-### 8. Expose this as an API
+### 9. Expose this as an API
 Install the requirements
 ```bash
 uv pip install -r requirements.txt
