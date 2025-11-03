@@ -54,7 +54,7 @@ uv pip install git+https://github.com/navchetna/tree-parser.git
 ### 7. Performance Optimization
 Install Intel® Extension for PyTorch for significant performance gains on **Xeon Processors**:
 ```bash
-uv pip install intel_extension_for_pytorch
+uv pip install intel_extension_for_pytorch==2.8.0
 ```
 
 Verify the installation:
