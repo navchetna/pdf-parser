@@ -52,7 +52,7 @@ uv pip install git+https://github.com/navchetna/tree-parser.git
 ```
 
 ### 7. Performance Optimization
-Install Intel® Extension for PyTorch for significant performance gains:
+Install Intel® Extension for PyTorch for significant performance gains on **Xeon Processors**:
 ```bash
 uv pip install intel_extension_for_pytorch
 ```
@@ -78,12 +78,12 @@ uv pip install -r requirements.txt
 
 Start the application
 ```bash
-uvicorn main:app
+marker_server --host=0.0.0.0 --port=8000
 ```
 
-Send a curl request
+Send a curl request to the service
 ```bash
-curl -X POST "http://localhost:8000/convert-pdf-to-json" -F "file=@/path/to/pdf" -o output.json
+curl -X POST http://localhost:8000/marker/upload -F "user=your-username" -F "file=@/path/to/pdf" -o output.json
 ```
 The output will be saved to 'output.json'
 

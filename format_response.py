@@ -3,11 +3,14 @@ import re
 from base64 import b64decode
 import os
 
+
 def extract_markdown_and_images(json_file_path):
     with open(json_file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
+        print("Data loaded successfully")
 
-    if "content" not in data or len(data["content"]) == 0:
+    if "output" not in data or not data["output"]:
+        print("No output field found or it's empty")
         return False
 
     base_name = os.path.splitext(os.path.basename(json_file_path))[0]
@@ -15,9 +18,8 @@ def extract_markdown_and_images(json_file_path):
     os.makedirs(output_dir, exist_ok=True)
     md_file_path = os.path.join(output_dir, 'output.md')
 
-    content = data["content"][0]
-    markdown = content.get("markdown", "")
-    images_dict = content.get("images", {})
+    markdown = data["output"]
+    images_dict = data.get("images", {})
 
     image_refs = re.findall(r"!\[\]\((_page_[^\)]+)\)", markdown)
 
@@ -33,10 +35,14 @@ def extract_markdown_and_images(json_file_path):
     with open(md_file_path, 'w', encoding='utf-8') as md_file:
         md_file.write(markdown)
 
+    print(f"Markdown file created: {md_file_path}")
+    print(f"Images processed: {len(image_refs)}")
+    
     return True
 
+
 if __name__ == "__main__":
-    file_name = '/home/intel/Ervin/test-parser/pdf-parser/output.json'
+    file_name = '/home/aigoldrush/ervin/output.json' # Replace with your JSON file path
     output_dir = os.path.splitext(os.path.basename(file_name))[0]
     success = extract_markdown_and_images(file_name)
     if success:
