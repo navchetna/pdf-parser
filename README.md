@@ -240,14 +240,22 @@ from marker.converters.pdf import PdfConverter
 from marker.models import create_model_dict
 from marker.output import text_from_rendered
 
+from tree_parser.tree import Tree
+from tree_parser.treeparser import TreeParser
+
+FILEPATH = "/path/to/file.pdf"
+USERNAME = "navchetna" # Update logic to receive username dynamically if needed
+
 converter = PdfConverter(
     artifact_dict=create_model_dict(),
 )
-rendered = converter("FILEPATH")
-text, _, images = text_from_rendered(rendered)
-```
+tree = Tree(FILEPATH, user_param=USERNAME)
+tree_parser = TreeParser(USERNAME)
+tree_parser.populate_tree(tree, converter)
 
-`rendered` will be a pydantic basemodel with different properties depending on the output type requested.  With markdown output (default), you'll have the properties `markdown`, `metadata`, and `images`.  For json output, you'll have `children`, `block_type`, and `metadata`.
+tree_parser.generate_output_text(tree)
+tree_parser.generate_output_json(tree)
+```
 
 ### Custom configuration
 
@@ -258,9 +266,16 @@ from marker.converters.pdf import PdfConverter
 from marker.models import create_model_dict
 from marker.config.parser import ConfigParser
 
+from tree_parser.tree import Tree
+from tree_parser.treeparser import TreeParser
+
+FILEPATH = "path/to/file.pdf"
+USERNAME = "navchetna" # Update logic to receive username dynamically if needed
+
 config = {
-    "output_format": "json",
-    "ADDITIONAL_KEY": "VALUE"
+    "output_format": "markdown",
+    "force_ocr": "True"
+    # "ADDITIONAL_KEY": "VALUE"
 }
 config_parser = ConfigParser(config)
 
@@ -271,9 +286,15 @@ converter = PdfConverter(
     renderer=config_parser.get_renderer(),
     llm_service=config_parser.get_llm_service()
 )
-rendered = converter("FILEPATH")
+tree = Tree(FILEPATH, user_param=USERNAME)
+tree_parser = TreeParser(USERNAME)
+tree_parser.populate_tree(tree, converter)
+
+tree_parser.generate_output_text(tree)
+tree_parser.generate_output_json(tree)
 ```
 
+## BETA features
 ### Extract blocks
 
 Each document consists of one or more pages.  Pages contain blocks, which can themselves contain other blocks.  It's possible to programmatically manipulate these blocks.  
